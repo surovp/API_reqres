@@ -1,8 +1,4 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-API_URL = os.getenv("base_url")
+base_url = 'https://reqres.in'
 
 
 def data_create_user():

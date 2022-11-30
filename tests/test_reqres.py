@@ -6,12 +6,12 @@ from shemas.reqres import get_single_user_schema, \
     post_create_user_schema, \
     post_register_user_schema,\
     put_user_schema
-from models.helpers import API_URL, data_create_user, data_edit_user, data_register_user
+from models.helpers import base_url, data_create_user, data_edit_user, data_register_user
 
 
 def test_get_single_user():
     with allure.step('send get request'):
-        response: Response = requests.get(API_URL+"/api/users/2")
+        response: Response = requests.get(base_url+"/api/users/2")
 
     with allure.step('check status code'):
         assert response.status_code == 200
@@ -26,7 +26,7 @@ def test_get_single_user():
 
 def test_post_create_user():
     with allure.step('send post request'):
-        create = requests.post(API_URL+"/api/users", data_create_user())
+        create = requests.post(base_url+"/api/users", data_create_user())
 
     with allure.step('check status code'):
         assert create.status_code == 201
@@ -41,7 +41,7 @@ def test_post_create_user():
 
 def test_put_user():
     with allure.step('send put request'):
-        update = requests.put(API_URL+'/api/users/2', data_edit_user())
+        update = requests.put(base_url+'/api/users/2', data_edit_user())
 
     with allure.step('check status code'):
         assert update.status_code == 200
@@ -62,7 +62,7 @@ def test_delete_user():
 
 def test_post_register_user():
     with allure.step('send post request'):
-        register = requests.post(API_URL+'/api/register', data_register_user())
+        register = requests.post(base_url+'/api/register', data_register_user())
 
     with allure.step('check status code'):
         assert register.status_code == 200
