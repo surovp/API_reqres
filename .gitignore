@@ -228,3 +228,7 @@ cython_debug/
 .gitignore
 
 allure-results/
+
+.idea
+
+
